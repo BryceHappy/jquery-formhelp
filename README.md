@@ -19,7 +19,7 @@ with your existing CSS files. The arrow in the helpbox is also a separate image 
 you can replace by some kind of arrow you like.
 
 ##Installing
-Grab *jquery.formhelp.js*, *jquery.formhelp.css* and *arrow_left.png* from the repository
+Grab **jquery.formhelp.js**, **jquery.formhelp.css** and **arrow_left.png** from the repository
 and make sure you insert the following lines in you HTML document. Insert
 jquery.formhelp.js _after_ the jQuery script:
 
