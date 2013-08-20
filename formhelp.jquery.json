@@ -1,7 +1,7 @@
 {
     "name": "formhelp",
     "title": "jQuery formHelp",
-    "description": "jQuery utility plugin providing contextual help on inputfields in a form",
+    "description": "jQuery utility plugin providing contextual help on input fields in a form",
     "homepage": "",
     "demo": "http://www.invetek.nl/samples/formhelp", 
     "keywords": ["input","help","contextual","form","utility"],
