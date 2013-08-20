@@ -104,6 +104,6 @@ elements for one helpbox, the helpbox show up at the top right of these elements
 
 ##Example
 
-Check out this [live](http://www.invetek.nl/samples/formstart) sample (and its [source](sample)).
+Check out this [live](http://www.invetek.nl/samples/formhelp) sample (and its [source](sample)).
 
 
