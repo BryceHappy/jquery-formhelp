@@ -1,0 +1,28 @@
+/*!
+ * jQuery FormHelp Plugin v0.1.0
+ * https://github.com/invetek/jquery-formhelp
+ *
+ * Copyright 2013 Loran Kloeze - Invetek
+ * Released under the MIT license
+ */
+
+.form-helpbox {
+    position: absolute;
+    margin: 0 0 0 25px;
+    padding:  0 0 0 15px;
+    background-image: url('arrow_left.png');
+    background-position: left 3px;
+    background-repeat: no-repeat;
+    display: none;
+}
+
+.form-helpbox .content {
+    padding: 5px 10px 10px 5px;
+    background-color: #0099cc;
+    width: 125px;
+    color: #EEE;
+    border: solid 1px #222;    
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px #222;
+    opacity: 0.95;
+}

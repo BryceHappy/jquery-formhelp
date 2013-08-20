@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
   jQuery FormHelp Plugin Sample
   https://github.com/invetek/jquery-formhelp
@@ -5,34 +6,190 @@
   Copyright 2013 Loran Kloeze - Invetek
   Released under the MIT license 
 -->
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>jQuery FormHelp plugin sample</title>
         <link rel="stylesheet" href="sample.css">
+        <link rel="stylesheet" href="../jquery.formhelp.css">        
         <script src="../lib/jquery.js"></script>
-        <script src="../jquery.formhelp.js"></script>
+        <!--<script src="../jquery.formhelp.js"></script>-->
+        <script src="../jquery.formhelp.min.js"></script>
         <script src="sample.js"></script>
     </head>
     <body>
         <div class="contentwrapper">
             <h1>jQuery FormHelp plugin sample</h1>
-            <p>When an inputfield is selected, the help text shows up.</p>
+            <p>How does it work? Actually, if the help needs an explanation it's probably not intuitive enough for a user...
+            But for you as a developer some background info might be in order.</p>
+            <p>There are 2 ways for the helpbox to show up. First, for text/number inputs like text/password/email etc. the 
+                box shows up when the <i>focus</i> event is triggered on the element. Second, for inputs like buttons and inputs whose values are changed 
+                when clicked, the helpbox shows up when the <i>mouseover</i> event is triggered on the element.
+            </p>
             <form id="sampleform">
                 <table>
                     <tr>
-                        <td><label for="input-name">Username</label></td>
-                        <td><input id="input-name" type="text"/></td>
+                        <td><label for="input-name">Input type=text</label></td>
+                        <td>
+                            <input id="input-name" type="text"/>
+                            <span class="helptext" data-for="#input-name">
+                                The username is <b>other</b> people's way of recognizing you around this website.
+                            </span>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="input-email">E-mail</label></td>
-                        <td><input id="input-email" type="text"/></td>
+                        <td><label for="input-email">Input type=email</label></td>
+                        <td>
+                            <input id="input-email" type="email"/>
+                            <span class="helptext" data-for="#input-email">
+                                <p>You can use <b>html</b> in these helpboxes.</p> Here's a &lt;hr&gt;:
+                                <hr>
+                                And here's is a &lt;ul&gt;:
+                                <ul>
+                                    <li>One</li>
+                                    <li>Two</li>
+                                    <li>Three</li>
+                                </ul>
+                                <hr>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><button type="submit">No need to send</button></td>
+                        <td><label for="input-date">Input type=date</label></td>
+                        <td>
+                            <input id="input-date" type="date"/>
+                            <span class="helptext" data-for="#input-date">
+                                Enter a date between the past and the future.
+                            </span>
+                        </td>
                     </tr>
+                    <tr>
+                        <td><label for="input-datetime">Input type=datetime</label></td>
+                        <td>
+                            <input id="input-datetime" type="datetime"/>
+                            <span class="helptext" data-for="#input-datetime">
+                                Enter a date and time between the past and the future.
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="input-datetime-local">Input type=datetime-local</label></td>
+                        <td>
+                            <input id="input-datetime-local" type="datetime-local"/>
+                            <span class="helptext" data-for="#input-datetime-local">
+                                Enter a local date and time between the past and the future.
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="input-file">Input type=file</label></td>
+                        <td>
+                            <input id="input-file" type="file"/>
+                            <span class="helptext" data-for="#input-file">
+                                Please, upload a valid file like some kind of image or PDF.
+                            </span>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td><label for="button-nouse">Input type=button</label></td>
+                        <td>
+                            <input type="button" id="button-nouse" value="No use"/>
+                            <span class="helptext" data-for="#button-nouse">
+                                It's some button you don't have to click.
+                            </span>
+                        </td>
+                    </tr>      
+                    <tr>
+                        <td><label for="input-color">Input type=color</label></td>
+                        <td>
+                            <input type="color" id="input-color"/>
+                            <span class="helptext" data-for="#input-color">
+                                Pick your favorite color!
+                            </span>
+                        </td>
+                    </tr>      
+                    <tr>
+                        <td><label for="input-image">Input type=image</label></td>
+                        <td>
+                            <input type="image" id="input-image" src="../arrow_left.png" alt="Ïmage"/>
+                            <span class="helptext" data-for="#input-image">
+                                The image in this button isn't very imaginative but it gets the point across.
+                            </span>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td><label for="input-range">Input type=range</label></td>
+                        <td>
+                            <input type="range" id="input-range"/>
+                            <span class="helptext" data-for="#input-range">
+                                Pick a value in this range.
+                            </span>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td><label>Input type=checkbox</label></td>
+                        <td>
+                            <label for="checkbox-travel-1"><input type="checkbox" name="checkbox-travel[]" id="checkbox-travel-1" value="1">By car</label>
+                            <label for="checkbox-travel-2"><input type="checkbox" name="checkbox-travel[]" id="checkbox-travel-2" value="2">By bike</label>
+                            <label for="checkbox-travel-3"><input type="checkbox" name="checkbox-travel[]" id="checkbox-travel-3" value="3">By boat</label>
+                            <span class="helptext" data-for="[name='checkbox-travel[]']">
+                                You have multiple choices, please choose one or more.
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Input type=reset</td>
+                        <td>
+                            <input id="button-reset" type="reset" value="Reset">
+                            <span class="helptext" data-for="#button-reset">
+                                Reset the form, nobody likes this button by the way. It's always being clicked on wh
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Input type=submit</td>
+                        <td>
+                            <button id="submit-signup" type="submit">OK, sign me up</button>
+                            <span class="helptext" data-for="#submit-signup">
+                                Did you enter the correct data?
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Input type=radio</label></td>
+                        <td>
+                            <input type="radio" name="radio-newsletter" id="radio-newsletter-yes" value="yes">
+                            <label for="radio-newsletter-yes">Yes</label>
+                            <input type="radio" name="radio-newsletter" id="radio-newsletter-no" value="no">
+                            <label for="radio-newsletter-no">No</label>
+                            <span class="helptext" data-for="[name='radio-newsletter']">
+                                Tell us your gender so we can address you in polite manner.
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="options-gender">Select options</label></td>
+                        <td>
+                            <select id="options-gender">
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                            </select>
+                            <span class="helptext" data-for="#options-gender">
+                                Please make a choice.
+                            </span>
+                        </td>
+                    </tr>      
+                    
+                    <tr>
+                        <td><label for="textarea-remarks">Textarea</label></td>
+                        <td>
+                            <textarea id="textarea-remarks"></textarea>
+                            <span class="helptext" data-for="#textarea-remarks">
+                                Please tell us what you think!
+                            </span>
+                        </td>
+                    </tr>
+                    
                     
                 </table>
             </form>

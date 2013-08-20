@@ -1,0 +1,24 @@
+{
+    "name": "formhelp",
+    "title": "jQuery formHelp",
+    "description": "jQuery utility plugin providing contextual help on inputfields in a form",
+    "homepage": "",
+    "demo": "http://www.invetek.nl/samples/formhelp", 
+    "keywords": ["input","help","contextual","form","utility"],
+    "author": {
+        "name": "Loran Kloeze | Invetek",
+        "email": "loran@invetek.nl",
+        "url": "http://www.invetek.nl/"
+        },
+    "version": "0.1.0",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.7"
+    }        
+    
+}
