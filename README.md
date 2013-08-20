@@ -8,7 +8,7 @@ A jQuery utility plugin providing contextual help on input fields in a form.
 Providing contextual help in a standard HTML form requires all kinds of extra HTML and 
 CSS (and JavaScript if you want it to play nice with the user). This plugin
 gives you an easy way to place contextual help at every input field in a form. 
-All you have to do is insert a <span/> with the helptext and a reference to the corresponding
+All you have to do is insert a span element with the helptext and a reference to the corresponding
 input field and this plugin does the heavy work for you.
 
 When you're done it looks like this:<br>
