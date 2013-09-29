@@ -6,6 +6,12 @@
  * Released under the MIT license
  */
 
-$(document).ready(function(){
-   $.formHelp();
+$(document).ready(function() {
+    //Normal operation
+    $.formHelp();
+
+    //Operation with a class prefix
+    $.formHelp(
+            {classPrefix: 'myprefix'}
+    );
 });

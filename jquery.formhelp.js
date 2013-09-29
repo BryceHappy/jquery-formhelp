@@ -1,5 +1,5 @@
 /*!
- * jQuery FormHelp Plugin v0.1.0
+ * jQuery FormHelp Plugin v0.1.1
  * https://github.com/invetek/jquery-formhelp
  *
  * Copyright 2013 Loran Kloeze - Invetek
@@ -7,16 +7,16 @@
  */
 
 (function($) {
-    $.formHelp = function(){        
+    $.formHelp = function(options){     
 
-        $('span.helptext').each(function(){
+        $('span.'+(options && options.classPrefix ? options.classPrefix+'-helptext' : 'helptext')).each(function(){
             
             // Grab the inputelement(s) for this helpbox
             var inputelements = $(this).attr('data-for');
             var $inputelements = $(inputelements);
             
             var $helpbox = $('<div/>')
-                    .addClass('form-helpbox')
+                    .addClass(options && options.classPrefix ? options.classPrefix+'-form-helpbox' : 'form-helpbox')
                     .attr('data-for', inputelements)
                     .append($('<div/>')
                     .addClass('content')

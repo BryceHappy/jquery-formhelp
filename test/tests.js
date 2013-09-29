@@ -152,6 +152,26 @@ test("add div.form-helpbox .content element", function(){
 
 /*
  * 
+ * Test options
+ * 
+ */
+module("Test correct implementation of options");
+test("add class prefix", function(){
+    expect(2);
+    create_input_fixture('text', 'myprefix');    
+    
+    equal($('span.myprefix-helptext').length, 1);
+    
+    $.formHelp({
+        classPrefix: 'myprefix'
+    });   
+    
+    equal($('div.myprefix-form-helpbox .content').length, 1);
+});
+
+
+/*
+ * 
  * Helper functions
  * 
  */
@@ -182,7 +202,7 @@ function test_input_onmouseover(type) {
     
 }
 
-function create_input_fixture(type) {
+function create_input_fixture(type, classPrefix) {
     var $fixture = $('#qunit-fixture');    
     
     $fixture.append(
@@ -193,7 +213,7 @@ function create_input_fixture(type) {
         
     $fixture.append(
         $('<span/>').attr({
-            'class': 'helptext',
+            'class': classPrefix ? classPrefix+'-helptext' : 'helptext',
             'data-for': '#input-fixture'
         }).html('Test <b>helptext</b>'));
         

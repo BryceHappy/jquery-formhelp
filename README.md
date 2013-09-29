@@ -3,6 +3,10 @@ jQuery-FormHelp
 
 A jQuery utility plugin providing contextual help on input fields in a form.
 
+##Changelog
+* v0.1.1 - Added class prefix option
+* v0.1.0 - Initial release
+
 ##Why this plugin?
 
 Providing contextual help in a standard HTML form requires all kinds of extra HTML and 
@@ -39,6 +43,7 @@ Also make sure the CSS is pointing at the right location of arrow_left.png
 
 ##Usage
 
+###Normal usage
 ```javascript
 $.formHelp();
 ```
@@ -55,6 +60,25 @@ the corresponding input element(s):
 
 When the plugin is ready all the user has to do is click on an element (or hover over it
 in case of buttons, radio elements and checkboxes) and the helptext shows up in a nice helpbox.
+
+###Usage with options
+```javascript
+$.formHelp({
+    classPrefix: 'myprefix' //Choose any prefix you like
+});
+```
+
+You can specify the class prefix by adding it to the options. By using the class prefix you can
+create different helpboxes or prevent the plugin from interfering with your layout. All the classes 
+used by the plugin will be prefixed. Don't forget to add the prefix to the helptext span element!
+
+```html
+<input id="username" type="text"/>
+<span class="myprefix-helptext" data-for="#username">
+    Please pick your username wisely, you can only choose it once!
+</span>
+```
+
 
 ###Triggering
 The type of the input element determines on what event the helpbox shows up. The main
@@ -105,5 +129,3 @@ elements for one helpbox, the helpbox show up at the top right of these elements
 ##Example
 
 Check out this [live](http://www.invetek.nl/samples/formhelp) sample (and its [source](sample)).
-
-
