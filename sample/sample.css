@@ -46,7 +46,7 @@ td:first-child {
     position: absolute;
     margin: 0 0 0 25px;
     padding:  0 0 0 15px;
-    background-image: url('../arrow_left.png');
+    background-image: url('../dist/img/arrow_left.png');
     background-position: left 3px;
     background-repeat: no-repeat;
     display: none;

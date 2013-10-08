@@ -1,24 +1,28 @@
 {
-    "name": "formhelp",
-    "title": "jQuery formHelp",
-    "description": "jQuery utility plugin providing contextual help on inputfields in a form",
-    "homepage": "http://www.invetek.nl/?p=85",
-    "demo": "http://www.invetek.nl/samples/formhelp", 
-    "keywords": ["input","help","contextual","form","utility"],
-    "author": {
-        "name": "Loran Kloeze | Invetek",
-        "email": "loran@invetek.nl",
-        "url": "http://www.invetek.nl/"
-        },
-    "version": "0.1.1",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://opensource.org/licenses/MIT"
-        }
-    ],
-    "dependencies": {
-        "jquery": ">=1.7"
-    }        
-    
+  "name": "formhelp",
+  "title": "jQuery formHelp",
+  "description": "jQuery utility plugin providing contextual help on inputfields in a form",
+  "version": "0.1.2",
+  "homepage": "http://www.invetek.nl/?p=85",
+  "docs": "https://github.com/invetek/jquery-formhelp",
+  "author": {
+    "name": "Loran Kloeze | Invetek",
+    "email": "loran@invetek.nl",
+    "url": "http://www.invetek.nl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/invetek/jquery-formhelp.git"
+  },
+  "bugs": "https://github.com/invetek/jquery-formhelp/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "1.7.0"
+  },
+  "keywords": ["input","help","contextual","form","utility"]
 }

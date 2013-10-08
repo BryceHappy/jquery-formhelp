@@ -218,3 +218,8 @@ pip-log.txt
 ## Netbeans
 #################
 nbproject/
+
+#################
+## Grunt
+#################
+/node_modules/

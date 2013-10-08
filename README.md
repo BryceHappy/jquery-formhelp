@@ -4,8 +4,9 @@ jQuery-FormHelp
 A jQuery utility plugin providing contextual help on input fields in a form.
 
 ##Changelog
-* v0.1.1 - Added class prefix option
-* v0.1.0 - Initial release
+* [v0.1.2](https://github.com/invetek/jquery-formhelp/tree/0.1.2) - No extra functionality, added Grunt as task runner
+* [v0.1.1](https://github.com/invetek/jquery-formhelp/tree/0.1.1) - Added class prefix option
+* [v0.1.0](https://github.com/invetek/jquery-formhelp/tree/0.1.0) - Initial release
 
 ##Why this plugin?
 
@@ -23,20 +24,21 @@ with your existing CSS files. The arrow in the helpbox is also a separate image 
 you can replace by some kind of arrow you like.
 
 ##Installing
-Grab **jquery.formhelp.js**, **jquery.formhelp.css** and **arrow_left.png** from the repository
+Grab the file tree from dist/ in the repository
 and make sure you insert the following lines in you HTML document. Insert
 jquery.formhelp.js _after_ the jQuery script:
 
 ```html
-<link rel="stylesheet" href="jquery.formhelp.css">
+<link rel="stylesheet" href="css/jquery.formhelp.css">
 <script src="jquery.formhelp.js"></script>
 ```
 
-Also make sure the CSS is pointing at the right location of arrow_left.png
+Also make sure the CSS is pointing at the right location of arrow_left.png. It normally
+does when you just copy the file tree from dist/.
 ```css
 .form-helpbox {
     (...)
-    background-image: url('arrow_left.png');
+    background-image: url('../img/arrow_left.png');
     (...)
 }
 ```

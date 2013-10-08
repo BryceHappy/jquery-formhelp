@@ -1,11 +1,3 @@
-/*!
- * jQuery FormHelp Plugin v0.1.1
- * https://github.com/invetek/jquery-formhelp
- *
- * Copyright 2013 Loran Kloeze - Invetek
- * Released under the MIT license
- */
-
 (function($) {
     $.formHelp = function(options){     
 
@@ -63,8 +55,7 @@
             // The elements that can't be clicked without changing their value or causing 
             // some kind of action. We use the mouseover/mouseout events instead of focus/blur.
             // The focus/blur events are still handled on these element because of the tab key.
-            $inputelements.filter('[type="reset"],[type="submit"],[type="checkbox"],[type="radio"],[type="button"],\n\
-                    [type="file"],[type="color"],[type="image"],[type="range"]').on('mouseover', function(){
+            $inputelements.filter('[type="reset"],[type="submit"],[type="checkbox"],[type="radio"],[type="button"],[type="file"],[type="color"],[type="image"],[type="range"]').on('mouseover', function(){
                 $(':input').blur();
                 $('div[data-for]').fadeOut('fast');
                 $helpbox.css({
