@@ -12,6 +12,6 @@ $(document).ready(function() {
 
     //Operation with a class prefix
     $.formHelp(
-            {classPrefix: 'myprefix'}
+            {classPrefix: 'myprefix', pushpinEnabled: false}
     );
 });
