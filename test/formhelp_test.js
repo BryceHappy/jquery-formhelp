@@ -382,7 +382,7 @@
                 
 	});
         
-        test("pushpin should be visible if disabled", function(){
+        test("pushpin should be invisible if disabled", function(){
                 expect(1);
                 create_input_fixture('text', null, 'textInput');
                 $.formHelp();
