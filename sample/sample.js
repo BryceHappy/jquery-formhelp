@@ -8,7 +8,7 @@
 
 $(document).ready(function() {
     //Normal operation
-    $.formHelp();
+    $.formHelp({pushpinEnabled: true});
 
     //Operation with a class prefix
     $.formHelp(

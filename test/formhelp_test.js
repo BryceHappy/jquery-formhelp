@@ -13,19 +13,19 @@
 	 * 
 	 */
 
-	function create_input_fixture(type, classPrefix) {
+	function create_input_fixture(type, classPrefix, inputId) {
 		var $fixture = $('#qunit-fixture');    
 		
 		$fixture.append(
 			$('<input/>').attr({
 				'type': type,
-				'id': 'input-fixture'
+				'id': (inputId || 'input-fixture')
 			}));
 			
 		$fixture.append(
 			$('<span/>').attr({
 				'class': classPrefix ? classPrefix+'-helptext' : 'helptext',
-				'data-for': '#input-fixture'
+				'data-for': '#'+(inputId || 'input-fixture') 
 			}).html('Test <b>helptext</b>'));
 			
 		return $fixture;    
@@ -68,7 +68,7 @@
 	function test_event_mouse(){
 		expect(4); 
 		equal($('.form-helpbox').length,1);
-		equal($('.form-helpbox[data-for="#input-fixture"] .content').html(),'Test <b>helptext</b>');
+		equal($('.form-helpbox[data-for="#input-fixture"] .content').html(),'<div class="tools"><img class="pushpin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwMlgImBQjBqwKgBowYMFgMAAgwAY5oDHVti48YAAAAASUVORK5CYII="></div>Test <b>helptext</b>');
 		$('#input-fixture').mouseover();
 		
 		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'),'block');
@@ -80,7 +80,7 @@
 	function test_event_focus(){
 		expect(4);     
 		equal($('.form-helpbox').length,1);
-		equal($('.form-helpbox[data-for="#input-fixture"] .content').html(),'Test <b>helptext</b>');
+		equal($('.form-helpbox[data-for="#input-fixture"] .content').html(),'<div class="tools"><img class="pushpin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwMlgImBQjBqwKgBowYMFgMAAgwAY5oDHVti48YAAAAASUVORK5CYII="></div>Test <b>helptext</b>');
 		$('#input-fixture').focus();
 		
 		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'),'block');
@@ -110,7 +110,7 @@
 
 	function test_input_onmouseover(type) {       
 		create_input_fixture(type);        
-		$.formHelp();
+		$.formHelp(null, true);
 		test_event_mouse();
 		
 	}
@@ -282,7 +282,117 @@
 		
 		equal($('div.myprefix-form-helpbox .content').length, 1);
 	});
+        
+        test("enable pushpin", function(){
+		expect(2);
+		create_input_fixture('text');           
+		$.formHelp({
+                    pushpinEnabled: false
+                });
+                
+		$('#input-fixture').focus();
+		
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'),'block');
+		$('.form-helpbox[data-for="#input-fixture"] .pushpin').mousedown();
+		
+		$('#input-fixture').blur();
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'), 'block');
+	});
  
+	/*
+	 * 
+	 * Test helpbox functionality
+	 * 
+	 */
+	module("Test additional helpbox functionality");
+	test("enabling pushpin button prevents closing helpbox for focus elements", function(){
+		expect(2);
+		create_input_fixture('text');           
+		$.formHelp({
+                    pushpinEnabled: false
+                });
+		$('#input-fixture').focus();
+		
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'),'block');
+		$('.form-helpbox[data-for="#input-fixture"] .pushpin').mousedown();
+		
+		$('#input-fixture').blur();
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'), 'block');
+	
+	});
+        
+        test("enabling pushpin button prevents closing helpbox for hover elements", function(){
+                expect(2);
+		create_input_fixture('button');           
+		$.formHelp({
+                    pushpinEnabled: false
+                }, true);
+		$('#input-fixture').mouseover();
+                
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'),'block');
+		$('.form-helpbox[data-for="#input-fixture"] .pushpin').mousedown();
+		
+		$('#input-fixture').mouseout();
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'), 'block');
+        });
+    
+        test("disabling pushpin button closes helpbox for focus elements", function(){
+		expect(2);
+		create_input_fixture('text');           
+		$.formHelp({
+                    pushpinEnabled: false
+                });
+		$('#input-fixture').focus();
+		
+		equal($('.form-helpbox[data-for="#input-fixture"]').css('display'),'block');
+		$('.form-helpbox[data-for="#input-fixture"] .pushpin').mousedown();
+                $('.form-helpbox[data-for="#input-fixture"] .pushpin').mouseup();
+                $('.form-helpbox[data-for="#input-fixture"] .pushpin').mousedown();
+                $('.form-helpbox[data-for="#input-fixture"] .pushpin').mouseup();
+                equal($('.form-helpbox[data-for="#input-fixture"]').css('display'), 'none');
+	
+	});    
+    
+        test("hovering hover elements should not render pushpinnend helpboxes invisible", function(){
+                expect(1);
+                create_input_fixture('text', null, 'textInput');
+                create_input_fixture('button', null, 'buttonInput');
+                $.formHelp({
+                    pushpinEnabled: false
+                });
+                $('#textInput').focus();
+                
+                $('.form-helpbox[data-for="#textInput"] .pushpin').mousedown();
+                $('.form-helpbox[data-for="#textInput"] .pushpin').mouseup();
+                
+                $('#buttonInput').mouseover();
+                equal($('.form-helpbox[data-for="#textInput"]').css('display'),'block');
+                
+	});
+        
+        test("pushpin should be visible if enabled", function(){
+                expect(1);
+                create_input_fixture('text', null, 'textInput');
+                $.formHelp({
+                    pushpinEnabled: true
+                });
+                $('#textInput').focus();
+                
+                equal($('.form-helpbox[data-for="#textInput"] .tools').css('display'),'block');
+                
+	});
+        
+        test("pushpin should be visible if disabled", function(){
+                expect(1);
+                create_input_fixture('text', null, 'textInput');
+                $.formHelp();
+                $('#textInput').focus();
+                
+                equal($('.form-helpbox[data-for="#textInput"] .tools').css('display'),'none');
+                
+	});
+        
+    
  })(jQuery);
  
  

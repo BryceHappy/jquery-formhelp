@@ -1,6 +1,6 @@
 {
     "name": "formhelp",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "jQuery utility plugin providing contextual help on inputfields in a form",
     "keywords": [
         "input",

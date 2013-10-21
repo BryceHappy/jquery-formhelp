@@ -1,4 +1,4 @@
-/*! jQuery formHelp - v0.1.3 - 2013-10-08
+/*! jQuery formHelp - v0.1.4 - 2013-10-21
 * http://www.invetek.nl/?p=85
 * https://github.com/invetek/jquery-formhelp
 * Copyright (c) 2013 Loran Kloeze | Invetek
@@ -6,9 +6,11 @@
 */
 
 (function($) {
-    $.formHelp = function(options){     
-
-        $('span.'+(options && options.classPrefix ? options.classPrefix+'-helptext' : 'helptext')).each(function(){
+    $.formHelp = function(options /**/, disableTimer /*Internal use*/){     
+        disableTimer = (disableTimer === undefined ? false : disableTimer);
+        options = $.extend({}, {pushpinEnabled: false}, options);
+        
+        $('span.'+(options.classPrefix ? options.classPrefix+'-helptext' : 'helptext')).each(function(){
             
             // Grab the inputelement(s) for this helpbox
             var inputelements = $(this).attr('data-for');
@@ -17,11 +19,29 @@
             var $helpbox = $('<div/>')
                     .addClass(options && options.classPrefix ? options.classPrefix+'-form-helpbox' : 'form-helpbox')
                     .attr('data-for', inputelements)
+                    .data('pushpinned', false)
                     .append($('<div/>')
                     .addClass('content')
-                    .html($(this).html()));
+                    .html('<div class="tools"><img class="pushpin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwMlgImBQjBqwKgBowYMFgMAAgwAY5oDHVti48YAAAAASUVORK5CYII=" /></div>'+$(this).html()));
 
-            $inputelements.last().after($helpbox);       
+            $inputelements.last().after($helpbox);
+            
+            if (options.pushpinEnabled) {
+                $helpbox.find('.tools').show();
+            }
+            
+            // Handle pushpin actions
+            $helpbox.find('.pushpin').on('mousedown', function(){
+                $helpbox.data('pushpinned', !$helpbox.data('pushpinned'));
+            }).on('mouseup', function(){
+                if ($helpbox.data('pushpinned')) {
+                    $(this).addClass('pinned');
+                } else {
+                    $(this).removeClass('pinned');
+                    $helpbox.fadeOut('fast');
+                }
+                
+            });
             
             // Collect elements for calculating position of $helpbox
             var $boundaryElements = $inputelements;
@@ -48,7 +68,9 @@
             });
 
             $inputelements.on('blur focusout', function(){  
-              $helpbox.fadeOut('fast');
+              if (!$helpbox.data('pushpinned')) {
+                  $helpbox.fadeOut('fast');
+              }
             });
 
             // There is no textarea resize event so we have to use mousemove            
@@ -64,13 +86,24 @@
             // The focus/blur events are still handled on these element because of the tab key.
             $inputelements.filter('[type="reset"],[type="submit"],[type="checkbox"],[type="radio"],[type="button"],[type="file"],[type="color"],[type="image"],[type="range"]').on('mouseover', function(){
                 $(':input').blur();
-                $('div[data-for]').fadeOut('fast');
                 $helpbox.css({
                     'left': helpboxLeft,
                     'top': helpboxTop
                 }).fadeIn('fast');             
             }).on('mouseout', function(){
-               $helpbox.fadeOut('fast');
+                if (disableTimer) { //For QUnit testing purposes
+                     if (!$helpbox.data('pushpinned')) {
+                      $helpbox.fadeOut('fast');
+                   } 
+                } else {
+                  setTimeout(function(){
+                    if (!$helpbox.data('pushpinned')) {
+                        $helpbox.fadeOut('fast');
+                     } 
+                  }, 1500);  
+                }
+                
+                
             });
             
             $(this).remove();
