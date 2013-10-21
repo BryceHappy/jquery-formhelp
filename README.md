@@ -4,6 +4,7 @@ jQuery-FormHelp
 A jQuery utility plugin providing contextual help on input fields in a form.
 
 ##Changelog
+* [v0.1.4](https://github.com/invetek/jquery-formhelp/tree/0.1.3) - Added a pushpin in the helpbox
 * [v0.1.3](https://github.com/invetek/jquery-formhelp/tree/0.1.3) - No extra functionality, added Grunt as task runner
 * [v0.1.2](https://github.com/invetek/jquery-formhelp/tree/0.1.2) - Don't use this version, it doesn't have a /dist directory
 * [v0.1.1](https://github.com/invetek/jquery-formhelp/tree/0.1.1) - Added class prefix option
@@ -68,6 +69,7 @@ in case of buttons, radio elements and checkboxes) and the helptext shows up in 
 ```javascript
 $.formHelp({
     classPrefix: 'myprefix' //Choose any prefix you like
+    pushpinEnabled: true //Enable or disable the little pushpin at top right
 });
 ```
 
@@ -82,6 +84,9 @@ used by the plugin will be prefixed. Don't forget to add the prefix to the helpt
 </span>
 ```
 
+When the pushpin is enabled the user can click on it to keep the helpbox from disappearing
+when an element loses focus. That way the user can ctrl-c/v the helptext for example.
+![Screenshot of a pushpin](/doc/screenshot_3.png)
 
 ###Triggering
 The type of the input element determines on what event the helpbox shows up. The main
