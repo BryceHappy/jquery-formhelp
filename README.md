@@ -86,6 +86,7 @@ used by the plugin will be prefixed. Don't forget to add the prefix to the helpt
 
 When the pushpin is enabled the user can click on it to keep the helpbox from disappearing
 when an element loses focus. That way the user can ctrl-c/v the helptext for example.
+
 ![Screenshot of a pushpin](/doc/screenshot_3.png)
 
 ###Triggering
