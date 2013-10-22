@@ -69,7 +69,7 @@ in case of buttons, radio elements and checkboxes) and the helptext shows up in 
 ```javascript
 $.formHelp({
     classPrefix: 'myprefix' //Choose any prefix you like
-    pushpinEnabled: true //Enable or disable the little pushpin at top right
+    pushpinEnabled: true //Enable or disable the little pushpin at the top right position
 });
 ```
 
