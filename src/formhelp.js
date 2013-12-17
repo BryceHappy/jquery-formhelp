@@ -6,9 +6,10 @@
         $('span.'+(options.classPrefix ? options.classPrefix+'-helptext' : 'helptext')).each(function(){
             
             // Grab the inputelement(s) for this helpbox
-            var inputelements = $(this).attr('data-for');
+            var inputelements = $(this).attr('data-for');   
+            inputelements = inputelements.replace("\\", "");
             var $inputelements = $(inputelements);
-            
+                        
             var $helpbox = $('<div/>')
                     .addClass(options && options.classPrefix ? options.classPrefix+'-form-helpbox' : 'form-helpbox')
                     .attr('data-for', inputelements)

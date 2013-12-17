@@ -392,6 +392,40 @@
                 
 	});
         
+        /*
+	 * 
+	 * Kill some bugs
+	 * 
+	 */
+	module("Bugkilling");
+        test("colons in the data-for attribute of the span element should be fine", function(){
+                expect(4);
+                
+                var $fixture = $('#qunit-fixture'); 
+		$fixture.append(
+			$('<input/>').attr({
+				'type': 'text',
+				'id': 'mainForm:supplier',
+                                'name': 'mainForm:supplier'
+			}));
+			
+		$fixture.append(
+			$('<span/>').attr({
+				'class': 'helptext',
+				'data-for': "#mainForm\\\\:supplier"
+			}).html('Test <b>helptext</b>'));
+                        
+                $.formHelp();  
+                equal($('.form-helpbox').length,1);
+		equal($('.form-helpbox[data-for="#mainForm\\\\:supplier"] .content').html(),'<div class="tools"><img class="pushpin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwMlgImBQjBqwKgBowYMFgMAAgwAY5oDHVti48YAAAAASUVORK5CYII="></div>Test <b>helptext</b>');
+		$('#mainForm\\:supplier').focus();
+		
+		equal($('.form-helpbox[data-for="#mainForm\\\\:supplier"]').css('display'),'block');
+		
+		$('#mainForm\\:supplier').blur();
+		equal($('.form-helpbox[data-for="#mainForm\\\\:supplier"]').css('display'), 'none'); 
+                
+	});
     
  })(jQuery);
  

@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="sample.css">
         <link rel="stylesheet" href="../dist/css/jquery.formhelp.css">        
         <script src="../libs/jquery/jquery.js"></script>
-        <script src="../dist/jquery.formhelp.js"></script>
+        <!--<script src="../dist/jquery.formhelp.js"></script>-->
+        <script src="../src/formhelp.js"></script>
         <script src="sample.js"></script>
     </head>
     <body>
@@ -27,6 +28,15 @@
             </p>
             <form id="sampleform">
                 <table>
+                    <tr>
+                        <td><label >Input type=text, with colons</label></td>
+                        <td>
+                            <input id="mainForm:supplier" type="text"/>
+                            <span class="helptext" data-for="#mainForm\\:supplier">
+                                Colons in the data-for work as well
+                            </span>
+                        </td>
+                    </tr>
                     <tr>
                         <td><label for="input-name">Input type=text</label></td>
                         <td>
