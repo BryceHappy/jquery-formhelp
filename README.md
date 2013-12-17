@@ -4,6 +4,7 @@ jQuery-FormHelp
 A jQuery utility plugin providing contextual help on input fields in a form.
 
 ##Changelog
+* [v0.1.5](https://github.com/invetek/jquery-formhelp/tree/0.1.5) - Using backslashes in data-for attribute of span elements is now OK
 * [v0.1.4](https://github.com/invetek/jquery-formhelp/tree/0.1.4) - Added a pushpin in the helpbox
 * [v0.1.3](https://github.com/invetek/jquery-formhelp/tree/0.1.3) - No extra functionality, added Grunt as task runner
 * <del>v0.1.2</del> - Don't use this version, it doesn't have a /dist directory

@@ -1,4 +1,4 @@
-/*! jQuery formHelp - v0.1.4 - 2013-12-17
+/*! jQuery formHelp - v0.1.5 - 2013-12-17
 * http://www.invetek.nl/?p=85
 * https://github.com/invetek/jquery-formhelp
 * Copyright (c) 2013 Loran Kloeze | Invetek
