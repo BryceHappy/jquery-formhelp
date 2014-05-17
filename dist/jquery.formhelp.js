@@ -1,7 +1,7 @@
-/*! jQuery formHelp - v0.1.5 - 2013-12-17
-* http://www.invetek.nl/?p=85
+/*! jQuery formHelp - v0.1.6 - 2014-05-17
+* http://www.invetek.nl
 * https://github.com/invetek/jquery-formhelp
-* Copyright (c) 2013 Loran Kloeze | Invetek
+* Copyright (c) 2014 Loran Kloeze | Invetek
 * Licensed MIT 
 */
 
@@ -20,12 +20,13 @@
             var $helpbox = $('<div/>')
                     .addClass(options && options.classPrefix ? options.classPrefix+'-form-helpbox' : 'form-helpbox')
                     .attr('data-for', inputelements)
+                    .css('z-index', 99999999)
                     .data('pushpinned', false)
                     .append($('<div/>')
                     .addClass('content')
                     .html('<div class="tools"><img class="pushpin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwMlgImBQjBqwKgBowYMFgMAAgwAY5oDHVti48YAAAAASUVORK5CYII=" /></div>'+$(this).html()));
 
-            $inputelements.last().after($helpbox);
+            $('body').prepend($helpbox);
             
             if (options.pushpinEnabled) {
                 $helpbox.find('.tools').show();

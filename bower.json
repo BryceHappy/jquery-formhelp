@@ -1,6 +1,6 @@
 {
     "name": "formhelp",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "jQuery utility plugin providing contextual help on inputfields in a form",
     "keywords": [
         "input",
@@ -19,6 +19,6 @@
             "url": "http://opensource.org/licenses/MIT"
         }
     ],
-    "homepage": "http://www.invetek.nl/?p=85",
+    "homepage": "http://www.invetek.nl",
     "main": "dist/jquery.formhelp.js"
 }
