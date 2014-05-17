@@ -4,6 +4,7 @@ jQuery-FormHelp
 A jQuery utility plugin providing contextual help on input fields in a form.
 
 ##Changelog
+* [v0.1.6](https://github.com/invetek/jquery-formhelp/tree/0.1.6) - The helpboxes are now childs of the body element
 * [v0.1.5](https://github.com/invetek/jquery-formhelp/tree/0.1.5) - Using backslashes in data-for attribute of span elements is now OK
 * [v0.1.4](https://github.com/invetek/jquery-formhelp/tree/0.1.4) - Added a pushpin in the helpbox
 * [v0.1.3](https://github.com/invetek/jquery-formhelp/tree/0.1.3) - No extra functionality, added Grunt as task runner
@@ -13,9 +14,9 @@ A jQuery utility plugin providing contextual help on input fields in a form.
 
 ##Why this plugin?
 
-Providing contextual help in a standard HTML form requires all kinds of extra HTML and 
+Providing contextual help in a standard HTML form requires all kinds of extra HTML and
 CSS (and JavaScript if you want it to play nice with the user). This plugin
-gives you an easy way to place contextual help at every input field in a form. 
+gives you an easy way to place contextual help at every input field in a form.
 All you have to do is insert a span element with the helptext and a reference to the corresponding
 input field and this plugin does the heavy work for you.
 
@@ -75,7 +76,7 @@ $.formHelp({
 ```
 
 You can specify the class prefix by adding it to the options. By using the class prefix you can
-create different helpboxes or prevent the plugin from interfering with your layout. All the classes 
+create different helpboxes or prevent the plugin from interfering with your layout. All the classes
 used by the plugin will be prefixed. Don't forget to add the prefix to the helptext span element!
 
 ```html
@@ -94,7 +95,7 @@ when an element loses focus. That way the user can ctrl-c/v the helptext for exa
 The type of the input element determines on what event the helpbox shows up. The main
 difference is the result of a mouseclick on the element. If a click causes a direct action
 as is the case with buttons, checkboxes and radio's, then the helpbox should show up
-on mouseover. For example: it's not intuitive to see a helpbox after having clicked on a 
+on mouseover. For example: it's not intuitive to see a helpbox after having clicked on a
 checkbox or submit button...
 
 These are the events and their corresponding input elements:
